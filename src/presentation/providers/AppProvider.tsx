@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import { Provider } from "react-redux";
 import { store } from "@/application/state/store";
-import { useAuthStateListener } from "../hooks/useAuthStateListener";
 
 // Component to initialize auth state listener
 const AuthStateListener: React.FC<{ children: React.ReactNode }> = ({
