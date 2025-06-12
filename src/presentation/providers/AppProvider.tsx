@@ -9,7 +9,6 @@ import { useAuthStateListener } from "../hooks/useAuthStateListener";
 const AuthStateListener: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const isInitialized = useAuthStateListener();
 
   // Render children once auth is initialized
   return <>{children}</>;
