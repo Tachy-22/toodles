@@ -61,7 +61,7 @@ export const Navbar = () => {
             </Link>
             {user && (
               <Link
-                href={`user/${user.uid}/todos`}
+                href={`/user/${user.uid}/todos`}
                 className="text-muted-foreground hover:text-foreground transition-colors flex items-center space-x-1"
               >
                 <span>Todos</span>
