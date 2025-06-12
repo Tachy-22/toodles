@@ -1,7 +1,11 @@
 // Firebase configuration
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+import {
+  getAuth,
+  setPersistence,
+  browserLocalPersistence,
+} from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -14,11 +18,18 @@ const firebaseConfig = {
   databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
 };
 
-
-
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
+
+// Set Firebase auth persistence to local storage
+// This ensures the user stays logged in even after browser refresh
+if (typeof window !== "undefined") {
+  setPersistence(auth, browserLocalPersistence).catch((error) => {
+    console.error("Error setting auth persistence:", error);
+  });
+}
+
 // Export Firebase services
 export { db, auth };
 export default app;

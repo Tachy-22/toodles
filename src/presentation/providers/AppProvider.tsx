@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Provider } from "react-redux";
 import { store } from "@/application/state/store";
 import { useAuthStateListener } from "../hooks/useAuthStateListener";
@@ -9,7 +9,9 @@ import { useAuthStateListener } from "../hooks/useAuthStateListener";
 const AuthStateListener: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  useAuthStateListener();
+  const isInitialized = useAuthStateListener();
+
+  // Render children once auth is initialized
   return <>{children}</>;
 };
 
@@ -17,9 +19,21 @@ const AuthStateListener: React.FC<{ children: React.ReactNode }> = ({
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
+  const [mounted, setMounted] = useState(false);
+
+  // Client-side only code
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <Provider store={store}>
-      <AuthStateListener>{children}</AuthStateListener>
+      {mounted ? (
+        <AuthStateListener>{children}</AuthStateListener>
+      ) : (
+        // Return placeholder with the same structure to avoid layout shift
+        <div className="contents">{children}</div>
+      )}
     </Provider>
   );
 };

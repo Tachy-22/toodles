@@ -4,35 +4,11 @@ import { NextRequest, NextResponse } from "next/server";
 const protectedRoutes = ["/todos", "/settings", "/profile"];
 // Define auth routes (accessible only when not logged in)
 const authRoutes = ["/login", "/register"];
-// Define protected API routes
 
+// This middleware shouldn't interfere with Firebase authentication
+// Firebase handles auth client-side, so we'll just let the pages handle auth checks
 export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-
-  // Check if the user is authenticated by looking for the session token in cookies
-  const token = request.cookies.get("firebase-auth-token")?.value;
-  const isAuthenticated = !!token;
-
-  // Handling protected routes (redirect to login if not authenticated)
-  if (
-    protectedRoutes.some((route) => pathname.startsWith(route)) &&
-    !isAuthenticated
-  ) {
-    const url = new URL("/login", request.url);
-    url.searchParams.set("callbackUrl", encodeURIComponent(pathname));
-    return NextResponse.redirect(url);
-  }
-
-  // Handling auth routes (redirect to todos if already authenticated)
-  //   if (
-  //     authRoutes.some((route) => pathname.startsWith(route)) &&
-  //     isAuthenticated
-  //   ) {
-  //     return NextResponse.redirect(new URL("/todos", request.url));
-  //   }
-
-  // Handling protected API routes (return 401 if not authenticated)
- 
+  // Let the client-side Firebase auth handle the authentication
   return NextResponse.next();
 }
 
