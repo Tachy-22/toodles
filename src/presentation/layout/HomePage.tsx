@@ -44,14 +44,10 @@ export default function HomePage() {
 
 {isAuthenticated && (
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-            <Link href={`/user/${user.uid}/todos`}>
+            <Link href={`/user/${user?.uid}/todos`}>
               <Button size="lg">My Todos</Button>
             </Link>
-            <Link href="/register">
-              <Button variant="outline" size="lg">
-                Create Account
-              </Button>
-            </Link>
+          
           </div>
         )}
         
