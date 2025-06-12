@@ -16,4 +16,3 @@ const page = async ({ params }: { params: { userId: string } }) => {
 };
 
 export default page;
-export const dynamic = "force-dynamic"; // Force dynamic rendering for this page
