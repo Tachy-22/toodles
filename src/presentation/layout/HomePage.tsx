@@ -6,7 +6,7 @@ import { Button } from "@/presentation/components/ui/button";
 import Link from "next/link";
 
 export default function HomePage() {
-  const { isAuthenticated, isLoading } = useSelector(
+  const { isAuthenticated, isLoading, user } = useSelector(
     (state: RootState) => state.auth
   );
 
@@ -41,6 +41,22 @@ export default function HomePage() {
             </Link>
           </div>
         )}
+
+{isAuthenticated && (
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+            <Link href={`/user/${user.uid}/todos`}>
+              <Button size="lg">My Todos</Button>
+            </Link>
+            <Link href="/register">
+              <Button variant="outline" size="lg">
+                Create Account
+              </Button>
+            </Link>
+          </div>
+        )}
+        
+        
+
       </div>
     </div>
   );
