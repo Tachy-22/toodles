@@ -4,7 +4,6 @@ import {
   setError,
 } from "../../state/todoSlice";
 import { updateTodoAction } from "@/app/actions/todoActions";
-import { Todo } from "@/domain/entities/Todo";
 
 /**
  * Update Todo Use Case - Simple Explanation

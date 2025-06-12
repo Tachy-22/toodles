@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "@/application/state/store";
 import { logoutUser } from "@/application/use-cases/auth/logoutUser";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/presentation/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,9 +14,9 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { ChevronDown, Home, List, LogOut, Settings, User } from "lucide-react";
-import { useToast } from "@/components/ui/use-toast";
+} from "@/presentation/components/ui/dropdown-menu";
+import { ChevronDown,  LogOut, Settings, User } from "lucide-react";
+import { useToast } from "@/presentation/components/ui/use-toast";
 
 export const Navbar = () => {
   const router = useRouter();
@@ -86,7 +86,9 @@ export const Navbar = () => {
                 <DropdownMenuContent align="end">
                   <DropdownMenuLabel>My Account</DropdownMenuLabel>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={() => router.push(`user/${user.uid}/settings`)}>
+                  <DropdownMenuItem
+                    onClick={() => router.push(`user/${user.uid}/settings`)}
+                  >
                     <Settings className="h-4 w-4 mr-2" />
                     <span>Settings</span>
                   </DropdownMenuItem>

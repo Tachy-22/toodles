@@ -7,8 +7,7 @@ import { TodoList } from "@/presentation/components/todos/TodoList";
 import { addTodo } from "@/application/use-cases/todos/addTodo";
 import { updateTodo } from "@/application/use-cases/todos/updateTodo";
 import { deleteTodo } from "@/application/use-cases/todos/deleteTodo";
-import { useToast } from "@/components/ui/use-toast";
-
+import { useToast } from "@/presentation/components/ui/use-toast";
 
 export default function TodosPage() {
   const dispatch = useDispatch<AppDispatch>();
@@ -17,9 +16,8 @@ export default function TodosPage() {
     (state: RootState) => state.todos
   );
   const { toast } = useToast();
- 
-  
-   // Add a new todo
+
+  // Add a new todo
   const handleAddTodo = (title: string) => {
     if (user) {
       dispatch(addTodo(user.uid, title))
@@ -89,17 +87,16 @@ export default function TodosPage() {
       });
   };
 
-
   return (
     <div className="flex gap-10 flex-col mx-auto py-10 px-4 max-w-7xl">
-        <TodoList
-          todos={todos}
-          isLoading={isLoading}
-          onAddTodo={handleAddTodo}
-          onToggleTodo={handleToggleTodo}
-          onDeleteTodo={handleDeleteTodo}
-          onUpdateTodo={handleUpdateTodo}
-        />
+      <TodoList
+        todos={todos}
+        isLoading={isLoading}
+        onAddTodo={handleAddTodo}
+        onToggleTodo={handleToggleTodo}
+        onDeleteTodo={handleDeleteTodo}
+        onUpdateTodo={handleUpdateTodo}
+      />
     </div>
   );
 }

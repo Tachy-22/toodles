@@ -3,18 +3,18 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/application/state/store";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/presentation/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/presentation/components/ui/card";
 import { ArrowLeft, LogOut } from "lucide-react";
 import { logoutUser } from "@/application/use-cases/auth/logoutUser";
 import Link from "next/link";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/presentation/components/ui/use-toast";
 
 export default function SettingsPage() {
   const dispatch = useDispatch<AppDispatch>();

@@ -2,7 +2,7 @@
 
 import { useSelector } from "react-redux";
 import { RootState } from "@/application/state/store";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/presentation/components/ui/button";
 import Link from "next/link";
 
 export default function HomePage() {

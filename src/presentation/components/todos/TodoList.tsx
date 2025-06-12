@@ -2,13 +2,8 @@ import React, { useState } from "react";
 import { Todo } from "../../../domain/entities/Todo";
 import { TodoItem } from "./TodoItem";
 import { TodoForm } from "./TodoForm";
-import { Skeleton } from "../../../components/ui/skeleton";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "../../../components/ui/card";
+import { Skeleton } from "../ui/skeleton";
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 
 interface TodoListProps {
   todos: Todo[];

@@ -1,7 +1,7 @@
 import React from "react";
 import { Todo } from "../../../domain/entities/Todo";
-import { Checkbox } from "../../../components/ui/checkbox";
-import { Button } from "../../../components/ui/button";
+import { Checkbox } from "../ui/checkbox";
+import { Button } from "../ui/button";
 import { Trash2, Edit2 } from "lucide-react";
 
 interface TodoItemProps {

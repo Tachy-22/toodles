@@ -4,8 +4,8 @@ import "./globals.css";
 import "@radix-ui/themes/styles.css";
 import ThemeProvider from "@/presentation/providers/ThemeProvider";
 import { AppProvider } from "@/presentation/providers/AppProvider";
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as SonnerToaster } from "@/components/ui/sonner";
+import { Toaster } from "@/presentation/components/ui/toaster";
+import { Toaster as SonnerToaster } from "@/presentation/components/ui/sonner";
 import Navbar from "@/presentation/components/common/Navbar";
 
 const geistSans = localFont({
@@ -36,7 +36,7 @@ export default function RootLayout({
       >
         <AppProvider>
           <ThemeProvider>
-            <Navbar/>
+            <Navbar />
             {children}
             <Toaster />
             <SonnerToaster />

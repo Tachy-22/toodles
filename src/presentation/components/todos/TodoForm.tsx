@@ -1,7 +1,6 @@
-
-import { Input } from "../../../components/ui/input";
-import { Button } from "../../../components/ui/button";
-import { Form, FormField, FormItem } from "../../../components/ui/form";
+import { Input } from "../ui/input";
+import { Button } from "../ui/button";
+import { Form, FormField, FormItem } from "../ui/form";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -57,7 +56,9 @@ export const TodoForm: React.FC<TodoFormProps> = ({
                   {...field}
                   className="flex-1"
                 />
-                <Button color="red" type="submit">{isEditing ? "Update" : "Add"}</Button>
+                <Button color="red" type="submit">
+                  {isEditing ? "Update" : "Add"}
+                </Button>
                 {isEditing && onCancel && (
                   <Button type="button" variant="outline" onClick={onCancel}>
                     Cancel
