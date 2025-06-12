@@ -6,7 +6,13 @@ import ThemeProvider from "@/presentation/providers/ThemeProvider";
 import { AppProvider } from "@/presentation/providers/AppProvider";
 import { Toaster } from "@/presentation/components/ui/toaster";
 import { Toaster as SonnerToaster } from "@/presentation/components/ui/sonner";
-import Navbar from "@/presentation/components/common/Navbar";
+import dynamic from "next/dynamic";
+
+// Import Navbar with no SSR to avoid hydration issues
+const Navbar = dynamic(
+  () => import("@/presentation/components/common/Navbar"),
+  { ssr: false }
+);
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,9 +36,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        suppressHydrationWarning
       >
         <AppProvider>
           <ThemeProvider>
