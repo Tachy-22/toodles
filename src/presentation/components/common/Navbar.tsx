@@ -87,7 +87,7 @@ export const Navbar = () => {
                   <DropdownMenuLabel>My Account</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem
-                    onClick={() => router.push(`user/${user.uid}/settings`)}
+                    onClick={() => router.push(`/user/${user.uid}/settings`)}
                   >
                     <Settings className="h-4 w-4 mr-2" />
                     <span>Settings</span>
